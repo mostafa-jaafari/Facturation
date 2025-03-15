@@ -36,11 +36,11 @@ export default function Hero() {
                         <Star size={18} key={index} className='text-yellow-500 fill-yellow-500'/>
                     )
                 })}
-                <p className='pl-1 text-sm'>4.5/5</p>
+                <p className='pl-1 text-sm'>4.9/5</p>
             </span>
         </div>
       </section>
-      <h1 className='text-[5vw] font-semibold lg:w-3/4 text-center'>
+      <h1 className='px-4 py-6 text-3xl md:text-5xl lg:text-6xl font-semibold lg:w-3/4 text-center'>
         Reimagine Your
         Financial Workflow
       </h1>

@@ -7,9 +7,9 @@ export default function Header(){
                 Facturation
             </Link>
             <div className="space-x-4">
-                <Link href='/'>Login</Link>
-                <span className="text-neutral-800">|</span>
-                <Link href='/'>Register</Link>
+                <Link href='/login'>Login</Link>
+                <span className="text-neutral-700">|</span>
+                <Link href='/register'>Register</Link>
             </div>
         </main>
     )
