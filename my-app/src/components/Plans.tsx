@@ -67,7 +67,7 @@ export default function Plans() {
                         <div className='space-y-4 my-6'>
                             {plan.features.map((feature, index) => {
                                 return (
-                                    <span className='flex gap-2 items-center'><BadgeCheck className='text-indigo-500'/> {feature}</span>
+                                    <span key={index} className='flex gap-2 items-center'><BadgeCheck className='text-indigo-500'/> {feature}</span>
                                 )
                             })}
                         </div>

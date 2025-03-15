@@ -2,18 +2,28 @@ import { Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { ErrorImage } from '../../public/Images'
+import { ErrorImage } from '../../public/Images';
+import Companie1 from '../../public/FakeCompanies/companie1.png';
+import Companie2 from '../../public/FakeCompanies/companie2.png';
+import Companie3 from '../../public/FakeCompanies/companie3.png';
 
 export default function Hero() {
-    const Companiies_Images: string[] = ['', '', '']
+    const Companies_Images = [Companie1, Companie2, Companie3]
   return (
     <main className='w-full h-[80vh] flex flex-col justify-center items-center'>
       <section className='flex items-center gap-4'>
         <div className='flex -space-x-4'>
-            {Companiies_Images.map((image, index) => {
+            {Companies_Images.map((image, index) => {
+              const Last_Image = index === Companies_Images.length - 1;
                 return (
-                    <div key={index} className='relative bg-neutral-100 w-12 h-12 overflow-hidden rounded-full border-2 border-neutral-900'>
-                        <Image src={image || ErrorImage} alt='' fill className='object-cover'/>
+                    <div key={index} className={`relative w-12 h-12 overflow-hidden 
+                      rounded-full border-2 border-neutral-900 ${Last_Image ? 'bg-neutral-800' : 'bg-neutral-300'}`}>
+                        <Image src={image || ErrorImage} alt='' fill className={`object-cover ${Last_Image && ''}`}/>
+                        {Last_Image && (
+                          <span className='absolute text-sm w-full h-full flex justify-center items-center'>
+                            +99
+                          </span>
+                        )}
                     </div>
                 )
             })}
