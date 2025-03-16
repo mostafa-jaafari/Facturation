@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SessionProvider } from "next-auth/react";
 
 
 const inter = Inter({
@@ -23,13 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} antialiased`}
-      >
-        <Header />
-          {children}
-          <Footer />
-      </body>
+      <SessionProvider>
+        <body
+          className={`${inter.variable} antialiased`}
+        >
+          <Header />
+            {children}
+            <Footer />
+        </body>
+      </SessionProvider>
     </html>
   );
 }

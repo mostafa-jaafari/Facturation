@@ -1,6 +1,9 @@
-import { Github, Twitter } from 'lucide-react'
+import { Github } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import GoogleIcon from '../../../public/GoogleIcon.svg';
+
 
 export default function page() {
   return (
@@ -21,7 +24,7 @@ export default function page() {
         <section className='w-full flex flex-col justify-center items-center'>
             <form className='border flex flex-col gap-4 border-neutral-800 rounded-lg bg-neutral-900 bg-opacity-30 max-w-[450px] min-w-[350px] w-full p-8'>
                 {/* ---------- Email ---------- */}
-                <div className='flex flex-col mt-6'>
+                <div className='flex flex-col'>
                     <label htmlFor="Email" className='p-1 text-sm text-neutral-300'>Email adress</label>
                     <input placeholder='Enter your email' id='Email' type='email' className='focus:border-indigo-500 outline-none border border-neutral-800 rounded-lg px-4 py-3 bg-transparent' required/>
                 </div>
@@ -50,7 +53,7 @@ export default function page() {
                     {/* ---------- Providers Btns ---------- */}
                     <span className='w-full flex gap-2'>
                         <Github className='bg-indigo-500 bg-opacity-30 fill-white cursor-pointer h-10 p-2 rounded-lg grow' />
-                        <Twitter className='bg-indigo-500 bg-opacity-30 fill-white cursor-pointer h-10 p-2 rounded-lg grow' />
+                        <Image src={GoogleIcon} alt='' className='bg-indigo-500 bg-opacity-30 fill-white cursor-pointer h-10 p-2 rounded-lg grow' />
                     </span>
                 </div>
             <span className='w-full pt-4 flex gap-1 justify-center text-sm text-neutral-400'>

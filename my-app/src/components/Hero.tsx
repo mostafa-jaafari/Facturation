@@ -6,6 +6,7 @@ import { ErrorImage } from '../../public/Images';
 import Companie1 from '../../public/FakeCompanies/companie1.png';
 import Companie2 from '../../public/FakeCompanies/companie2.png';
 import Companie3 from '../../public/FakeCompanies/companie3.png';
+import { signIn } from 'next-auth/react';
 
 export default function Hero() {
     const Companies_Images = [Companie1, Companie2, Companie3]
@@ -50,7 +51,7 @@ export default function Hero() {
       </p>
       <div className='space-x-4 py-8'>
         <Link style={{background: "linear-gradient(90deg, #6366f1 0%, #4f46e5 100%)"}} href='/' className='py-4 px-8 rounded-lg hover:shadow-[0_10px_20px_rgba(79,70,229,0.3)]'>Free Trial</Link>
-        <Link href='/' className='border border-neutral-800 px-8 py-4 rounded-lg bg-neutral-900'>Watch Demo</Link>
+        <Link href='/login' className='border border-neutral-800 px-8 py-4 rounded-lg bg-neutral-900'>Watch Demo</Link>
       </div>
     </main>
   )
