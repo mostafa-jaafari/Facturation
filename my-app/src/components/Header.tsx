@@ -13,7 +13,6 @@ const NavLink = [
 ];
 export default async function Header(){
     const Session = await auth();
-    const UserName = Session?.user?.name;
     return (
         <main className="sticky top-0 z-50 backdrop-blur-lg bg-neutral-900 bg-opacity-40 w-full flex items-center justify-between py-4 border-b border-dashed border-neutral-700 lg:px-20 px-6">
             <Link href='/' className="font-semibold text-2xl">
