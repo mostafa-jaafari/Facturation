@@ -2,15 +2,12 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { ErrorImage } from "../../public/Images";
-import { BadgeInfo, ChartNoAxesCombined, ChevronDown, Scroll, Settings, User } from "lucide-react";
-import SignOut from "@/Buttons/SignOut";
-const NavLink = [
-    {label: 'my profile', icon: User},
-    {label: 'dashboard', icon: ChartNoAxesCombined},
-    {label: 'my invoices', icon: Scroll},
-    {label: 'settings', icon: Settings},
-    {label: 'help center', icon: BadgeInfo},
-];
+import { ChevronDown } from "lucide-react";
+import SignOutButton from "@/Buttons/SignOutButton";
+import { Direct_Links, SideBarLinks } from "@/Links/NavigationLinks";
+
+
+
 export default async function Header(){
     const Session = await auth();
     return (
@@ -35,9 +32,10 @@ export default async function Header(){
                             <p className="text-xs bg-indigo-600 w-max py-1 px-2 my-2 rounded-full">Professional Plan</p>
                         </nav>
                         <nav className="flex flex-col border-b border-neutral-700 py-2">
-                            {NavLink.map((nav, index) => {
+                            {SideBarLinks.map((nav, index) => {
+                                const NavigationLink = nav.label.replace(" ", "").toLocaleLowerCase();
                                 return (
-                                    <Link href={nav.label.replace(" ", "").toLocaleLowerCase()} 
+                                    <Link href={nav.label === 'dashboard' ? '/dashboard' : `/dashboard?navto=${NavigationLink}`} 
                                         key={index}
                                         className="hover:text-neutral-400 flex items-end gap-2 space-y-2">
                                         <nav.icon size={24}/>
@@ -48,8 +46,21 @@ export default async function Header(){
                                 )
                             })}
                         </nav>
+                        <nav>
+                            {Direct_Links.map((nav, index) => {
+                                return (
+                                    <Link href={nav.label} 
+                                        key={index}
+                                        className="hover:text-neutral-400">
+                                        <p className="capitalize py-2 border-b border-neutral-700 w-full text-center">
+                                            {nav.label}
+                                        </p>
+                                    </Link>
+                                )
+                            })}
+                        </nav>
                         <nav className="pt-2">
-                            <SignOut />
+                            <SignOutButton />
                         </nav>
                     </div>
                 </section>
@@ -58,8 +69,6 @@ export default async function Header(){
                 (
                 <section className="space-x-4">
                     <Link href='/login'>Login</Link>
-                    <span className="text-neutral-700">|</span>
-                    <Link href='/register'>Register</Link>
                 </section>
                 )}
         </main>

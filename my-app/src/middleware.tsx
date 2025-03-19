@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
 import { auth } from "./auth";
 
 export async function middleware(request: NextRequest) {
@@ -7,7 +6,7 @@ export async function middleware(request: NextRequest) {
   const isAuth = await auth();
 
     //  ------------ Protected Routes ------------
-  const protectedRoutes = ["/dashboard", "/myprofile"];
+  const protectedRoutes = ["/dashboard", "/myprofile", "/add-invoice", "/registration"];
   const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
 
 
@@ -20,7 +19,7 @@ export async function middleware(request: NextRequest) {
     //  --- If the user loged in and he want to redirect to a not protected route ---
 
   if (isAuth && !isProtectedRoute) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/registration", request.url));
   }
 
   return NextResponse.next();
@@ -28,5 +27,5 @@ export async function middleware(request: NextRequest) {
 
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/myprofile/:path*", "/login", "/register"],
+  matcher: ["/dashboard/:path*", "/myprofile/:path*", "/login", "/registration", "/add-invoice"],
 };
